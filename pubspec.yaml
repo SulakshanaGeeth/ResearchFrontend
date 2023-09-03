@@ -75,6 +75,32 @@ flutter:
     - assets/images/Component 3 - img 02.png
     - assets/images/Component 3 - img 03.png
     - assets/images/Component 3 - img 04.png
+    - assets/comtwo/child05_01.wav
+    - assets/comtwo/child05_02.wav
+    - assets/comtwo/child05_03.wav
+    - assets/comtwo/child05_04.wav
+    - assets/comtwo/child05_05.wav
+    - assets/comtwo/child05_06.wav
+    - assets/comtwo/child05_07.wav
+    - assets/comtwo/1.jpg
+    - assets/comtwo/2.jpg
+    - assets/comtwo/3.jpg
+    - assets/comtwo/4.jpg
+    - assets/comtwo/5.png
+    - assets/comtwo/6.png
+    - assets/comtwo/7.jpg
+    - assets/comthree/1.png
+    - assets/comthree/2.jpg
+    - assets/comthree/3.jpg
+    - assets/comthree/4.jpg
+    - assets/comthree/5.png
+    - assets/comthree/Answer1.wav
+    - assets/comthree/Answer2.wav
+    - assets/comthree/Answer3.wav
+    - assets/comthree/Answer4.wav
+    - assets/comthree/Answer5.wav
+
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

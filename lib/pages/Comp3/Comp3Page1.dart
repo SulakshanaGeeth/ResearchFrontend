@@ -22,7 +22,7 @@ class _Comp3Page1State extends State<Comp3Page1> {
           Image.asset('assets/images/Component 3 - img 01.png')
         ),
         SizedBox(height: 30,),
-        ButtonXL(route: '/Comp1Intro', title: 'ආරම්භ කරන්න', bg: MyStyles.cbtnPrimary),
+        ButtonXL(route: '/Comp3Page2', title: 'ආරම්භ කරන්න', bg: MyStyles.cbtnPrimary),
        ], 
     );
   }

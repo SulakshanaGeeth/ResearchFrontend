@@ -5,7 +5,10 @@ import 'package:Autism/pages/Comp1/Step1/Comp1Step1Second.dart';
 import 'package:Autism/pages/Comp1/Step1/Comp1Step1Third.dart';
 import 'package:Autism/pages/Comp1/Step2/Comp1Step2.dart';
 import 'package:Autism/pages/Comp2/Comp2Page1.dart';
+import 'package:Autism/pages/Comp2/Comp2Page3.dart';
+import 'package:Autism/pages/Comp2/Comp2page2.dart';
 import 'package:Autism/pages/Comp3/Comp3Page1.dart';
+import 'package:Autism/pages/Comp3/Comp3Page4.dart';
 import 'package:Autism/pages/Home.dart';
 import 'package:Autism/pages/Results.dart';
 import 'package:Autism/pages/Welcome.dart';
@@ -90,6 +93,20 @@ class MyApp extends StatelessWidget {
           appbar: true,
         ),
 
+        '/Comp2Page2':(context)=>MyTemplate(
+          title: 'දෙවැනි කාර්යය',
+          child: Comp2Page2(),
+          bg:  MyStyles.cPrimary,
+          appbar: true,
+        ),
+
+        '/Comp2Page3':(context)=>MyTemplate(
+          title: 'දෙවැනි කාර්යය',
+          child: Comp2Page3(),
+          bg:  MyStyles.cPrimary,
+          appbar: true,
+        ),
+
 
 
         '/Comp3Page1':(context)=>MyTemplate(
@@ -98,6 +115,25 @@ class MyApp extends StatelessWidget {
           bg:  MyStyles.cPrimary,
           appbar: true,
         ),
+        '/Comp3Page2':(context)=>MyTemplate(
+          title: 'තුන්වන කාර්යය',
+          child: Comp3Page1(),
+          bg:  MyStyles.cPrimary,
+          appbar: true,
+        ),
+        '/Comp3Page3':(context)=>MyTemplate(
+          title: 'තුන්වන කාර්යය',
+          child: Comp3Page1(),
+          bg:  MyStyles.cPrimary,
+          appbar: true,
+        ),
+        '/Comp3Page4':(context)=>MyTemplate(
+          title: 'තුන්වන කාර්යය',
+          child: Comp3Page4(),
+          bg:  MyStyles.cPrimary,
+          appbar: true,
+        ),
+
 
         '/Results':(context)=>MyTemplate(
           title: 'ප්‍රතීඵලය',
@@ -105,10 +141,7 @@ class MyApp extends StatelessWidget {
           bg:  MyStyles.cPrimary,
           appbar: true,
         ),
-
-
-
-        
+       
       }
     );
   }
