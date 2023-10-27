@@ -17,8 +17,7 @@ class Comp2Page3 extends StatefulWidget {
 }
 
 class _Comp2Page3State extends State<Comp2Page3> {
-
-  File ?recordedFile;
+  File? recordedFile;
 
   String text = '';
   String image = '';
@@ -26,60 +25,70 @@ class _Comp2Page3State extends State<Comp2Page3> {
   String color = '';
 
   Future sendRequest() async {
-      try {
-        Response response;
-        var dio = Dio();
+    try {
+      Response response;
+      var dio = Dio();
 
-        ByteData assetByteData = await rootBundle.load(audio);
-        List<int> assetBytes = assetByteData.buffer.asUint8List();
+      ByteData assetByteData = await rootBundle.load(audio);
+      List<int> assetBytes = assetByteData.buffer.asUint8List();
 
-         FormData formData = FormData();
+      FormData formData = FormData();
 
-        formData.files.add(
-          MapEntry(
-            'files',
-            await MultipartFile.fromBytes(assetBytes,filename: 'audio1.wav'),
-          ),
-        );
-        formData.files.add(
-          MapEntry(
-            'files',
-            await MultipartFile.fromFile(recordedFile!.path,filename: 'audio2.wav'),
-          ),
-        );
-        // FormData formData = FormData.fromMap({
-        //   'audio': await MultipartFile.fromBytes(assetBytes,
-        //       filename: 'audio1.wav'
-        //   ),
-        //   'audioa': await MultipartFile.fromFile(recordedFile!.path,
-        //       filename: 'audio2.wav'
-        //   ),
-        // });
+      formData.files.add(
+        MapEntry(
+          'files01',
+          await MultipartFile.fromBytes(assetBytes, filename: 'audio1.wav'),
+        ),
+      );
+      formData.files.add(
+        MapEntry(
+          'files02',
+          await MultipartFile.fromFile(recordedFile!.path,
+              filename: 'audio2.wav'),
+        ),
+      );
+      // FormData formData = FormData.fromMap({
+      //   'audio': await MultipartFile.fromBytes(assetBytes,
+      //       filename: 'audio1.wav'
+      //   ),
+      //   'audioa': await MultipartFile.fromFile(recordedFile!.path,
+      //       filename: 'audio2.wav'
+      //   ),
+      // });
 
-        response = await dio.post(
-          Api.Comp2Api,
-          data: formData,
-          onSendProgress: (int sent, int total) {
-            //print((100 * sent) / total);
-          },
-        );
-        if (response.statusCode == 200) {
+      response = await dio.post(
+        Api.Comp2Api,
+        data: formData,
+        // onSendProgress: (int sent, int total) {
+        //   //print((100 * sent) / total);
+        //   print(formData.files.map((e) => print(e.value.filename)));
+        // },
+      );
+
+      if (response.statusCode == 200) {
+        if (response.data["pronounce-validation"] == "autism") {
           setState(() {
-            color = response.data['color'];
+            color = "රතු පාට";
           });
-          print(color);
-          nextPage('/Results');
-
+          // var color = "Red";
+        } else {
+          // color = "Green";
+          setState(() {
+            color = "කොළ පාට";
+          });
         }
-      } catch (e) {
-        print(e);
+        print(response.data);
+        print(response.data["pronounce-validation"]);
+        print(color);
+        nextPage('/Results');
       }
+    } catch (e) {
+      print(e);
     }
+  }
 
   void nextPage(String route) {
-    Navigator.pushNamed(context, route, arguments: {
-      'color':color
-    });
+    Navigator.pushNamed(context, route, arguments: {'color': color});
   }
 
   @override
@@ -88,30 +97,41 @@ class _Comp2Page3State extends State<Comp2Page3> {
     text = arg['text'];
     image = arg['image'];
     audio = arg['audio'];
-    
-    return Column(
-       children: [
-        ImageCard(image:image),
-        SizedBox(height: 10,),
-        Instructions(title: 'උපදෙස්',body: text,),
-        SizedBox(height: 10,),
 
-        
+    return Column(
+      children: [
+        ImageCard(image: image),
+        SizedBox(
+          height: 10,
+        ),
+        Instructions(
+          title: 'උපදෙස්',
+          body: text,
+        ),
+        SizedBox(
+          height: 10,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            AudioInput(audio: 'audio', rtn: (reco){
-              setState(() {
-                recordedFile = reco;
-              });
-              print('recorded');
-            }),
-    
-            recordedFile !=null ? ButtonIcon(click: () => sendRequest(), icon: Icons.arrow_forward_ios, bg: MyStyles.cbtnPrimary,):SizedBox(),
+            AudioInput(
+                audio: 'audio',
+                rtn: (reco) {
+                  setState(() {
+                    recordedFile = reco;
+                  });
+                  print('recorded');
+                }),
+            recordedFile != null
+                ? ButtonIcon(
+                    click: () => sendRequest(),
+                    icon: Icons.arrow_forward_ios,
+                    bg: MyStyles.cbtnPrimary,
+                  )
+                : SizedBox(),
           ],
         )
-        
-       ], 
+      ],
     );
   }
 }

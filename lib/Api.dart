@@ -1,9 +1,9 @@
 library Autism.Api;
 
-String ip = 'http://192.168.8.101:5000/';
+String ip = 'http://10.0.2.2:5000';
 
-String Comp1Api = 'http://192.168.8.101:5000/audio';
+String Comp1Api = 'http://10.0.2.2:5000/abnomility-sentiment';
 
-String Comp2Api = 'http://192.168.8.101:5000/audio';
+String Comp2Api = 'http://10.0.2.2:5000/pronounce-validation';
 
-String Comp3Api = 'http://192.168.8.101:5000/audio';
+String Comp3Api = 'http://10.0.2.2:5000/answer-evaluation';
